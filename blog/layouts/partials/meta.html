@@ -1,0 +1,46 @@
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+{{- if .IsHome }}
+<meta name="description" content="{{ .Site.Params.Description }}">
+{{- else if .Description }}
+<meta name="description" content="{{ .Description }}">
+{{- end }}
+<link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
+<link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
+<meta name="theme-color" content="#00A497">
+{{ with .Site.Params.contact }}<meta name="contact" content="{{ . }}">{{ end }}
+{{ hugo.Generator }}
+
+<link rel="apple-touch-icon" href="{{ .Site.BaseURL }}images/logo.png">
+<link rel="shortcut icon" href="{{ .Site.BaseURL }}images/favicon.ico">
+
+{{ range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title | safeHTML }}">
+{{ end }}
+
+<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+{{- if .IsHome }}
+<meta property="og:type" content="blog">
+{{- else }}
+<meta property="og:type" content="article">
+{{- end }}
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ absURL (.Params.thumbnail | default "images/default.png") }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{- if .IsHome }}
+<meta property="og:description" content="{{ .Site.Params.Description }}">
+{{- else if .Description }}
+<meta property="og:description" content="{{ .Description }}">
+{{- end }}
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ .Site.Params.Twittersite }}">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}">
+{{- if .IsHome }}
+<meta name="twitter:description" content="{{ .Site.Params.Description }}">
+{{- else if .Description }}
+<meta name="twitter:description" content="{{ .Description }}">
+{{- end }}
+<meta name="twitter:image" content="{{ absURL (.Params.thumbnail | default "images/default.png") }}">

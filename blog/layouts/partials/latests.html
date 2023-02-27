@@ -1,0 +1,9 @@
+<section class="sidebar">
+  <header>新着の記事</header>
+  <div class="sub">NEW ARTICLES</div>
+  <div class="articles sm">
+    {{ range $i, $p := (first 5 .Site.RegularPages) }}
+    {{ .Render "li_sm" }}
+    {{ end }}
+  </div>
+</section>

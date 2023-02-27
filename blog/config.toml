@@ -1,0 +1,66 @@
+baseURL = 'http://workany.jp/blog/'
+languageCode = 'ja-JP'
+title = 'WorkAnyLAB'
+theme = "hugo_theme_robust"
+
+hasCJKLanguage = true
+
+titleLength = 30
+
+pluralizeListTitles = false #複数形削除
+
+[params]
+description = "WorkAnyLAB（ワークエニーラボ）は副業・フリーランスの方々や自由な働き方を希望する方々に向けて様々な知識や情報を発信する働き方サポートメディアです。"
+subtitle = "副業・フリーランスに関する様々な知識や情報を発信するメディア"
+dateformat = "2006年1月2日15:04" #15:04:05 Optional
+# Fonts settings.
+googlefonts = "https://fonts.googleapis.com/css?family=Lobster|Lato:400,700" # Optional, Include google fonts.
+fontfamily = "'Noto Sans JP','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','ヒラギノ角ゴ W3','Hiragino Sans',Meiryo, メイリオ, 'MS PGothic', arial, helvetica, sans-serif" # Optional, Override body font family.
+logofontfamily = "Lobster, cursive" # Optional, Override logo font.
+
+enableHighlight = true # highlight.js option
+
+enableGitInfo = true
+
+twittersite = "@WorkAnyPRO"
+
+defaultAuthor = "デフォルトユーザー"
+ [params.authors]
+   [params.authors.moriharu]
+     name      = "もりはる"
+     bio       = "副業・複業・パラレルワーク・フリーランスなど、自由な働き方に関する情報を届けるメディア「はたらく探求部」を立ち上げ、現在は企画・編集・ライティングを担当しています。"
+
+
+[frontmatter]
+  lastmod = ':fileModTime'
+
+[outputs]
+page = [ "HTML", "AMP" ] # if you want AMP enable.
+
+[taxonomies]
+tags = "tags"
+archives = "archives"
+sections = "sections"
+
+[related]
+    includeNewer = true
+    threshold = 80
+    toLower = true
+
+  [[related.indices]]
+    name = "sections"
+    weight = 80
+
+  [[related.indices]]
+    name = "tags"
+    weight = 60
+
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+  [markup]
+    [markup.tableOfContents]
+      endLevel = 2
+      #ordered = true
+      startLevel = 2

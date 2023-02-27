@@ -1,0 +1,71 @@
+<article class="sn">
+  <div class="thumb thumb-{{ .File.UniqueID }}"></div>
+  <header class="article-header">
+    <h1 class="title">{{ .Title }}</h1>
+
+    <ul class="facts">
+      <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2006-01-02T15:04:05JST" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+      {{ if ne .Date .Lastmod }}
+      <li><i class="fas fa-sync" aria-hidden="true"></i><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05JST" }}">{{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+      {{ end }}
+      {{ if eq (getenv "HUGO_ENV") "DEV" }}
+      <li>{{ .WordCount }} Words</li>
+      {{ end }}
+      {{ if .Draft }}
+      <li style="color: #2196f3;">DRAFT</li>
+      {{ end }}
+    </ul>
+
+    {{ with .Params.tags }}
+      <ul class="terms">
+    {{- range . -}}
+         <li><a href="{{ "/blog/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+  </header>
+  <div class="article-body">{{ .Params.introduction}}
+  </div>
+  {{ if gt (len .TableOfContents) 33 }}
+  <div class="toc">
+    <div class="toc-index">目次</div>
+    {{ .TableOfContents }}
+  </div>
+  {{ end }}
+
+  <div class="article-body">{{ .Content }}</div>
+
+  <footer class="article-footer">
+
+    {{ partial "share.html" . }}
+
+    <div class="author">
+
+  <div class="author_title">書いた人</div>
+  {{ if .Params.author }}
+    {{ $author := index .Site.Params.Authors .Params.author}}
+    {{ if $author }}
+      <!-- Front Matterのauthorがauthors中にあるとき -->
+      <ul>
+        <li class="author_name">Name: {{ $author.name }}</li>
+        <li class="author_bio">Bio: {{ $author.bio }}</li>
+      </ul>
+    {{ else }}
+      <!-- Front Matterのauthorがauthorsに無かったとき -->
+      <ul>
+        <li class="author_name">Name: {{ $author.name }}</li>
+      </ul>
+    {{ end }}
+  {{ else }}
+    <!-- Front Matterにauthorが無かったとき -->
+      <ul>
+        <li class="author_name">Name: {{ .Site.Params.defaultAuthor}}</li>
+      </ul>
+  {{ end }}
+</div>
+
+
+  </footer>
+
+</article>

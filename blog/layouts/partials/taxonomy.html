@@ -1,0 +1,19 @@
+<!--<section class="sidebar">
+  <header>カテゴリ</header>
+  <div class="sub">CATEGORIES</div>
+  <ul class="terms">
+    {{ range $key, $value := first 10 .value.ByCount }}
+    <li><a href="{{ $.baseurl}}{{ $.key }}/{{ .Name | urlize }}">{{ .Name }} <span class="count">({{ $value.Count }})</span></a></li>
+    {{ end }}
+  </ul>
+</section>-->
+
+<section class="sidebar">
+  <header>{{ .name }}</header>
+  <div class="sub">{{ .key | upper }}</div>
+  <ul class="terms">
+    {{ range $key, $value := first 10 .value.ByCount }}
+    <li><a href="{{ $.baseurl}}{{ $.key }}/{{ .Name | urlize }}">{{ .Name }} <span class="count">({{ $value.Count }})</span></a></li>
+    {{ end }}
+  </ul>
+</section>
