@@ -1,4 +1,5 @@
-baseURL = 'http://workany.jp/blog/'
+baseURL = 'https://tsunoda-fan.github.io/workanylab/'
+publishDir = "docs"
 languageCode = 'ja-JP'
 title = 'WorkAnyLAB'
 theme = "hugo_theme_robust"
