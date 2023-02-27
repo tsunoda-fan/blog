@@ -1,0 +1,20 @@
+{{- define "breadcrumb" }}
+  {{- if .node.Parent }}
+    {{- template "breadcrumb" (dict "node" .node.Parent "start" .start) }}
+  {{- else if not .node.IsHome }}
+    {{- template "breadcrumb" (dict "node" .node.Site.Home "start" .start) }}
+  {{- end }}
+
+  {{- if eq .node .start }}
+    {{- if .node.IsHome }}
+    {{- else }}
+    <li class="textlimit">{{ .node.LinkTitle }}</li>
+    {{- end }}
+  {{- else }}
+    {{- if .node.IsHome }}
+      <li><a href="/blog/"><img src="/blog/images/home_icon.svg"></a></li>
+    {{- else }}
+    <li><a href="{{ .node.Permalink }}">{{ .node.LinkTitle }}</a><!-- #カテゴリページ表示用-->
+    {{- end }}
+  {{- end }}
+{{- end }}

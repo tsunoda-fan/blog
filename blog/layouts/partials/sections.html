@@ -1,0 +1,9 @@
+<section class="sidebar">
+  <header>カテゴリ</header>
+  <div class="sub">CATEGRIES</div>
+    <ul class="terms">
+      {{ range .Site.Sections }}
+      <li><a href="/blog/{{ .Title }}">{{ .Title }}<span class="count"> ({{ len (where .Site.RegularPages "Section" "==" .Section ) }})</span></a></li>
+      {{ end }}
+    </ul>
+</section>

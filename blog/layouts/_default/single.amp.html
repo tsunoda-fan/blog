@@ -1,0 +1,25 @@
+{{ define "title" }}{{ .Title }} - {{ end }}
+
+{{ define "meta" }}
+{{ partial "single_meta.html" . }}
+{{ partial "single_json_ld.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{ .Render "summary" }}
+
+<div class="adj mrow">
+  <div class="mcol c6">
+    <header>前の記事</header>
+    {{ with .PrevInSection }}
+    {{ .Render "li_sm" }}
+    {{ end }}
+  </div>
+    <div class="mcol c6">
+      <header>次の記事</header>
+    {{ with .NextInSection }}
+      {{ .Render "li_sm" }}
+    {{ end }}
+    </div>
+</div>
+{{ end }}

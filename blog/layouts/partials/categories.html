@@ -1,0 +1,3 @@
+{{ with .Site.Taxonomies.categories }}
+{{ partial "taxonomy.html" (dict "context" $.Site "key" "category" "name" "カテゴリ" "value" . "baseurl" $.Site.BaseURL) }}
+{{ end }}

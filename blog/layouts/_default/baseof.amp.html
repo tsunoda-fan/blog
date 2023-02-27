@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ⚡>
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
+    {{ partial "meta.html" . }}
+    {{ block "meta" . }}{{ end }}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WFHHRDT');</script>
+    <!-- End Google Tag Manager -->
+    {{ if and .Site.GoogleAnalytics (ne (getenv "HUGO_ENV") "DEV") }}
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <meta name="amp-google-client-id-api" content="googleanalytics">
+    {{ end }}
+    {{ with .Site.Params.googlefonts }}
+    <link href="{{ . }}" rel="stylesheet">
+    {{ else }}
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+    {{ end }}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+{{ with resources.Get "styles.scss" | toCSS }}
+  {{ replace .Content `@charset "UTF-8";` "" | safeCSS }}
+{{ end }}
+
+.thumb {
+  background-image: url("{{ "images/default.jpg" | absURL }}");
+  background-size: cover;
+  background-position: center;
+}
+{{ range $p := .Site.RegularPages }}
+  {{ with $p.Params.thumbnail }}
+  .thumb-{{ $p.File.UniqueID }} {
+    background-image: url("{{ . | absURL }}");
+  }
+  {{ end }}
+{{ end }}
+
+{{ partial "custom.css" . | safeCSS }}
+{{ with .Site.Params.fontfamily }} body { font-family: {{ . | safeCSS }}; } {{ end }}
+{{ with .Site.Params.logofontfamily }} .h-logo { font-family: {{ . | safeCSS }}; } {{ end }}
+.l-container { max-width: 40rem; margin: 0 auto; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFHHRDT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="l-header">
+      <ul class="logo-dcp">
+        {{- if .IsHome }}
+        <li><h1 class="logo">
+          <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL }}images/logo.svg" alt="WorkAnyLAB"></a>
+        </h1></li>
+        {{ else }}
+        <li class="logo">
+          <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL }}images/logo.svg" alt="WorkAnyLAB"></a>
+        </li>
+        {{ end }}
+        {{ with .Site.Params.Subtitle }}
+        <li><span class="description">
+          {{ . | markdownify}}
+        </span></li>
+        {{ end }}
+      </ul>
+
+        <nav>
+          <div class="sp-only">
+            <div class="menu">
+              <input type="checkbox" id="drawer-check" class="drawer-hidden" >
+
+              <!-- ハンバーガーアイコン -->
+              <label for="drawer-check" class="drawer-open"><img src="{{ .Site.BaseURL }}images/icon_menu.svg" height="45" alt="メニュー"></label>
+
+              <!-- 追加：メニューを閉じるための要素 -->
+              <label for="drawer-check" class="drawer-close drawer-back"></label>
+
+              <!-- メニュー -->
+              <nav id="drawer" class="drawer">
+                <div class="drawer-close drawer-close-top"><img src="{{ .Site.BaseURL }}images/icon_close.svg" height="45" alt="閉じる"></div>
+                <div class="drawer-content">
+                  <div class="drawer-sitelink">
+                    <ul>
+                      <li><a href="https://pro-partner.workany.jp/" class="sitelink sitelink-partner">副業・フリーランスの方はこちら</a></li>
+                      <li><a href="https://pro-client.workany.jp/" class="sitelink sitelink-client">採用担当の方はこちら</a></li>
+                    </ul>
+                  </div>
+                  <ul class="drawer-list">
+                    <li><a href="https://www.fancs.com" target="_blank"><span class="link-blank">運営会社</span></a></li>
+                    <li><a href="https://www.fancs.com/privacypolicy" target="_blank"><span class="link-blank">プライバシーポリシー</span></a></li>
+                    <li><a href="https://pro-client.workany.jp/terms" target="_blank"><span class="link-blank">利用規約</span></a></li>
+                    <li><a href="https://info.workany.jp/" class="flex" target="_blank"><span class="link-blank">お知らせ<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></span></a></li>
+                  </ul><!-- /.drawer-list -->
+                  <label for="drawer-check" class="drawer-close-bottom">閉じる</label>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <div class="pc-only">
+            <ul class="link-btns">
+              <li><a href="https://pro-partner.workany.jp/" class="link link-partner">副業・フリーランスの方はこちら</a></li>
+              <li><a href="https://pro-client.workany.jp/" class="link link-client">採用担当の方はこちら</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>
+
+    <main>
+      <div class="l-container">
+        {{ block "main" . }}{{ end }}
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="l-menu">
+                <p class="logo">
+                    <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL }}images/workany_logo_white.svg" class="mx-auto" alt=""></a>
+                </p>
+                <div class="content">
+                  <ul>
+                      <li><a href="https://www.fancs.com/" class="flex" target="_blank">ー　運営会社<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></a></li>
+                      <li><a href="https://www.fancs.com/privacypolicy" class="flex" target="_blank">ー　プライバシーポリシー<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></a></li>
+                      <li><a href="https://pro-partner.workany.jp/terms" class="flex" target="_blank">ー　利用規約<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></a></li>
+                      <li><a href="https://info.workany.jp/" class="flex" target="_blank">ー　お知らせ<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></a></li>
+                      <li><a href="https://pro-partner.workany.jp/" class="flex" target="_blank">ー　副業・フリーランスの方はこちら<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></a></li>
+                      <li><a href="https://pro-client.workany.jp/" class="flex" target="_blank">ー　採用担当の方はこちら<img src="{{ .Site.BaseURL }}images/blank.svg" alt=""></a></li>
+                  </ul>
+                </div>
+      </div>
+      <div class="l-copyright">
+        <p>Copyright© FAN Communications, Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

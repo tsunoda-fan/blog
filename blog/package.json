@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "wpxml2md": "^2.0.0"
+  }
+}

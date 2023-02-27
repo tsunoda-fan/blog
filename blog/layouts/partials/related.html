@@ -1,0 +1,28 @@
+{{ $related := .Site.RegularPages.Related . | first 4 }}
+{{ with $related }}
+<div class="related">
+  <header>関連する記事</header>
+  <div class="related_list">
+        {{ range . }}
+        <article class="related_card">
+          <a href="{{ .RelPermalink }}">
+        <div class="thumb thumb-{{ .File.UniqueID }}"></div>
+
+        <div class="inner">
+          <div class="title">{{ .Title }}</div>
+          <ul class="facts sm">
+            <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2007-01-02" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+            {{ if eq (getenv "HUGO_ENV") "DEV" }}
+            <li>{{ .WordCount }} Words</li>
+            {{ end }}
+            {{ if .Draft }}
+            <li style="color: #2196f3;">下書き</li>
+            {{ end }}
+          </ul>
+        </div>
+      </a>
+</article>
+          {{ end }}
+</div>
+</div>
+{{ end }}
