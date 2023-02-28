@@ -25,7 +25,7 @@
     {{ end }}
 
   </header>
-  <div class="article-body">{{ .Params.introduction}}
+  <div class="article-body"><p class="introduction">{{ .Params.introduction}}</p>
   </div>
   {{ if gt (len .TableOfContents) 33 }}
   <div class="toc">
@@ -42,28 +42,25 @@
 
     <div class="author">
 
-  <div class="author_title">書いた人</div>
+  <!--<div class="author_title">書いた人</div>
   {{ if .Params.author }}
     {{ $author := index .Site.Params.Authors .Params.author}}
     {{ if $author }}
-      <!-- Front Matterのauthorがauthors中にあるとき -->
       <ul>
         <li class="author_name">Name: {{ $author.name }}</li>
         <li class="author_bio">Bio: {{ $author.bio }}</li>
       </ul>
     {{ else }}
-      <!-- Front Matterのauthorがauthorsに無かったとき -->
       <ul>
         <li class="author_name">Name: {{ $author.name }}</li>
       </ul>
     {{ end }}
   {{ else }}
-    <!-- Front Matterにauthorが無かったとき -->
       <ul>
         <li class="author_name">Name: {{ .Site.Params.defaultAuthor}}</li>
       </ul>
   {{ end }}
-</div>
+</div>-->
 
 
   </footer>
