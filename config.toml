@@ -1,4 +1,4 @@
-baseURL = 'https://tsunoda-fan.github.io/'
+baseURL = 'https://tsunoda-fan.github.io/blog/'
 publishDir = "docs"
 languageCode = 'ja-JP'
 title = 'WorkAnyLAB'
