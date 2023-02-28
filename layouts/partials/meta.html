@@ -25,7 +25,7 @@
 <meta property="og:type" content="article">
 {{- end }}
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:image" content="{{ absURL (.Params.thumbnail | default "images/default.png") }}">
+<meta property="og:image" content="{{ absURL (.Params.thumbnail | default "images/ogp_logo.png") }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 {{- if .IsHome }}
 <meta property="og:description" content="{{ .Site.Params.Description }}">
