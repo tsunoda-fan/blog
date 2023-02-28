@@ -1,5 +1,5 @@
 baseURL = 'https://tsunoda-fan.github.io/blog/'
-publishDir = "docs"
+publishDir = "docs/blog"
 languageCode = 'ja-JP'
 title = 'WorkAnyLAB'
 theme = "hugo_theme_robust"
