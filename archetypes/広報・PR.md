@@ -9,5 +9,6 @@ description = ""
 sections = "広報・PR"
 tags = []
 archives = ["{{ dateFormat "2006/01" .Date }}"]
+introduction = """ """
 toc = true
 +++
