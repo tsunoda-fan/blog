@@ -23,7 +23,7 @@
             <h2 class="title">{{ .Title }}</h2>
 
             <ul class="facts">
-              <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2006-01-02T15:04:05JST" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+              <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
               {{ if eq (getenv "HUGO_ENV") "DEV" }}
               <li>{{ .WordCount }} Words</li>
               {{ end }}
@@ -32,7 +32,7 @@
               {{ end }}
             </ul>
 
-            <div class="summary">{{ plainify .Summary | safeHTML }}</div>
+            <div class="summary">{{ plainify .Description | safeHTML }}</div>
           </div>
         </a>
       </article>

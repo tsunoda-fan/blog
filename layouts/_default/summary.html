@@ -40,27 +40,73 @@
 
     {{ partial "share.html" . }}
 
+
+
+    <div class="pickup"> <!--縦にする-->
+      <div class="workanypro"><a href="https://pro-partner.workany.jp/"><img src="/blog/images/logo_workanypro.svg" alt="WorkAnyPROアイコン"></a></div>
+      <div class="title">オススメ案件</div>
+      <div class ="pickup_box">
+        {{ range .Site.Params.Pickups }}
+        <div class="pickup_chbox">
+          <a href="https://pro-partner.workany.jp/recruit/{{ .id }}/detail">
+          <div class="box_left">
+            <img src="/blog/images/pickup/{{ .id }}.jpg" alt="{{ .title }}のイメージ">
+          </div>
+          <div class="box_right">
+            <ul>
+              <li class="pickup_title">{{ .title }}</li>
+              <li class="pickup_occupation"><img src="/blog/images/icon-occupation.svg" alt="職種アイコン">: {{ .occupation }}</li>
+              <li class="pickup_reward"><img src="/blog/images/icon-reward.svg" alt="報酬アイコン">: {{ .reward }}
+                {{with eq .reward_consultation "yes"}}
+                <span>※要相談</span>
+                {{end}}
+              </li>
+              <li class="pickup_time"><img src="/blog/images/icon-time.svg" alt="日数アイコン">: {{ .time }} 日／週
+                {{with eq .time_consultation "yes"}}
+                <span>※要相談</span>
+                {{end}}
+              </li>
+              <li class="pickup_day"><img src="/blog/images/icon-day.svg" alt="日数アイコン">: {{ .day }} 時間／日
+                {{with eq .day_consultation "yes"}}
+                <span>※要相談</span>
+                {{end}}
+              </li>
+            </ul>
+          </div>
+          </a>
+        </div>
+        {{ end }}
+      </div>
+      <a class="pickup_more" href="https://pro-partner.workany.jp/"><div>他の案件も見る</div></a>
+    </div>
+
     <div class="author">
 
-  <!--<div class="author_title">書いた人</div>
-  {{ if .Params.author }}
-    {{ $author := index .Site.Params.Authors .Params.author}}
-    {{ if $author }}
-      <ul>
-        <li class="author_name">Name: {{ $author.name }}</li>
-        <li class="author_bio">Bio: {{ $author.bio }}</li>
-      </ul>
+    {{ if .Params.author }}
+      {{ $author := index .Site.Params.Authors .Params.author}}
+      {{ if $author }}
+      <div class ="author_profile">
+        <div class="author_left">
+          <img src="{{ $author.pic }}" alt="{{ $author.alt }}">
+        </div>
+        <div class="author_right">
+          <ul>
+            <li class="author_name">{{ $author.name }}</li>
+            <li class="author_bio">{{ $author.bio }}</li>
+          </ul>
+        <div>
+      </div>
+      {{ else }}
+        <ul>
+          <li class="author_name">{{ $author.name }}</li>
+        </ul>
+      {{ end }}
     {{ else }}
-      <ul>
-        <li class="author_name">Name: {{ $author.name }}</li>
-      </ul>
+        <ul>
+          <li class="author_name">{{ .Site.Params.defaultAuthor}}</li>
+        </ul>
     {{ end }}
-  {{ else }}
-      <ul>
-        <li class="author_name">Name: {{ .Site.Params.defaultAuthor}}</li>
-      </ul>
-  {{ end }}
-</div>-->
+    </div>
 
 
   </footer>

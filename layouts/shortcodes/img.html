@@ -1,12 +1,35 @@
+<input type="checkbox" id="pop-up">
+<label id="popup" for="pop-up" class="overlay">
+  <label class="popWindow">
+    <div class="ptitle"><label class="close" for="pop-up">×</label><img itemprop="image" loading="lazy" src="{{ .Get "src" | absURL }}" alt="{{ .Get "caption" }}" ></img>
+      <figcaption class="caption">
+        {{ if .Get "title"}}
+        <p>{{ .Get "title" }}</p>
+        {{ end }}
+        {{ if .Get "href" }}
+        <p>（出典：</p><a href="{{ .Get "href" }}" rel="noopener" target="_blank">{{ .Get "caption" }}</a><p class="end">）</p>
+        {{ else }}
+        {{ .Get "caption" }}
+        {{ end }}
+      </figcaption>
+    </div>
+  </label>
+</label>
+
+<div class="inner_image">
+    <label for="pop-up">
 <figure{{ if .Get "class" }} class="{{ .Get "class" }}"{{ end }}>
-  <img src="{{ .Get "src" | absURL }}" alt="{{ .Get "caption" }}"{{ with (.Get "w") }} width="{{ . }}"{{ end }}{{ with (.Get "h") }} height="{{ . }}"{{ end }}>
-  {{ if .Get "caption" }}
-  <figcaption>
+  <img src="{{ .Get "src" | absURL }}" alt="{{ .Get "caption" }}"{{ with (.Get "w") }} width="{{ . }}"{{ end }}{{ with (.Get "h") }} height="{{ . }}"{{ end }}  ></img>
+  <figcaption class="caption">
+    {{ if .Get "title"}}
+    <h4>{{ .Get "title" }}</h4>
+    {{ end }}
     {{ if .Get "href" }}
-    <a href="{{ .Get "href" }}" rel="noopener" target="_blank">{{ .Get "caption" }}</a>
+    <p>（出典：</p><a href="{{ .Get "href" }}" rel="noopener" target="_blank">{{ .Get "caption" }}</a><p class="end">）</p>
     {{ else }}
     {{ .Get "caption" }}
     {{ end }}
   </figcaption>
-  {{ end }}
 </figure>
+</label>
+</div>
