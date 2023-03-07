@@ -49,6 +49,13 @@ table {
   display: block;
   overflow-x: auto; }
 
+table tr th {
+  visibility: collapse; }
+
+table tr td:nth-of-type(1) {
+  text-align: right;
+  font-weight: bold; }
+
 th, td {
   font-size: .8rem;
   padding: .5rem; }
@@ -394,8 +401,8 @@ article.li .thumb {
 
 article.li .title {
   color: #333;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
+  font-size: 18px;
+  line-height: 1.3rem;
   margin-bottom: .5rem; }
 
 article.li .summary {
@@ -522,10 +529,10 @@ article.sn > .article-body h3 {
   margin: 30px 0 0px; }
 
 article.sn > .article-body h4 {
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.6;
   font-weight: 600;
-  margin: 0; }
+  margin: 30px 0 0px; }
 
 article.sn > .article-body h5 {
   font-size: 16px;
@@ -540,7 +547,8 @@ article.sn > .article-body ol {
 
 article.sn > .article-body li {
   padding-bottom: .5rem;
-  line-height: 1.5rem; }
+  line-height: 1.5rem;
+  font-size: 16px; }
 
 article.sn > .article-body li:last-child {
   padding-bottom: 0; }
@@ -566,7 +574,7 @@ article.sn > .article-body strong {
   box-shadow: 0 -.5rem 0 0 #00A497 inset; }
 
 article.sn > .article-body em {
-  color: #8bc34a; }
+  color: #333; }
 
 article.sn > .article-body h2 code {
   font-size: 1.1rem; }
@@ -644,13 +652,13 @@ article.sn > .article-body figcaption a {
   font-weight: 600;
   margin: 0; }
 
-h4::before {
+article.sn > .article-body figcaption h4::before {
   content: "\025b6"; }
 
 .facts li {
   display: inline;
   font-size: .8rem;
-  margin-right: 1rem; }
+  margin-right: 8px; }
 
 .facts i {
   color: #cfd8dc;
@@ -658,6 +666,11 @@ h4::before {
 
 .facts.sm li {
   font-size: .7rem; }
+
+.facts .sections {
+  font-size: 12px;
+  font-weight: 700;
+  color: #999999; }
 
 section.sidebar {
   margin: 1rem 0 2rem;

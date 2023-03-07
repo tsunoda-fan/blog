@@ -16,13 +16,18 @@
       {{ end }}
     </ul>
 
-    {{ with .Params.tags }}
+
+
       <ul class="terms">
+      {{ with .Params.sections }}
+      <li><a href="{{ "/blog/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+      {{ end }}
+      {{ with .Params.tags }}
     {{- range . -}}
          <li><a href="{{ "/blog/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
         {{ end }}
+      {{ end }}
       </ul>
-    {{ end }}
 
   </header>
   <div class="article-body"><p class="introduction">{{ .Params.introduction}}</p>
