@@ -11,6 +11,7 @@ titleLength = 30
 
 pluralizeListTitles = false #複数形削除
 
+
 [params]
 description = "WorkAnyLAB（ワークエニーラボ）は副業・フリーランスの方々や自由な働き方を希望する方々に向けて様々な知識や情報を発信する働き方サポートメディアです。"
 subtitle = "副業・フリーランスに関する様々な知識や情報を発信するメディア"
@@ -39,6 +40,12 @@ defaultAuthor = "デフォルトユーザー"
       bio       = "フリーランスの英日翻訳者、Webライターとして活動中。得意なジャンルは投資、クレジットカード、インバウンドなど。丁寧な翻訳、わかりやすいライティングを心がけています。"
       pic       = "/blog/images/author/nomotokazuki.png"
       alt       = "野本一貴の写真"
+
+    [params.authors.toshiyu]
+       name      = "Toshiyu"
+       bio       = "電力関連の仕事に13年従事、その後インドネシアに移住して一年のほとんどを海外で過ごす。現在はライターとしてフリーランス・副業・複業に関する記事を執筆。自由な働き方に挑戦する読者へ役立つ情報の発信を目指しています。"
+       pic       = "/blog/images/author/toshiyu.jpeg"
+       alt       = "Toshiyuの写真"
 
 [params.pickups]
   [params.pickups.1]
@@ -119,3 +126,8 @@ sections = "sections"
       endLevel = 2
       #ordered = true
       startLevel = 2
+
+
+    [markup.goldmark]
+      [markup.goldmark.renderer]
+        unsafe = true

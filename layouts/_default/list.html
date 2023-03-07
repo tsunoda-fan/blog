@@ -24,6 +24,7 @@
 
             <ul class="facts">
               <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+              <li class="sections">{{ .Params.sections }}</li>
               {{ if eq (getenv "HUGO_ENV") "DEV" }}
               <li>{{ .WordCount }} Words</li>
               {{ end }}

@@ -9,14 +9,16 @@
 
 <div class="adj mrow">
   <div class="mcol c6">
-    <header>前の記事</header>
-    {{ with .PrevInSection }}
+    {{ with .Site.RegularPages.Prev . }}
+      <header>前の記事</header>
+    <!-- セクションごとに前の記事を表示するなら with .Parent.RegularPages.Prev . -->
     {{ .Render "li_sm" }}
     {{ end }}
   </div>
   <div class="mcol c6">
-    <header>次の記事</header>
-    {{ with .NextInSection }}
+    {{ with .Site.RegularPages.Next . }}
+      <header>次の記事</header>
+    <!-- セクションごとに次の記事を表示するなら with .Parent.RegularPages.Next . -->
     {{ .Render "li_sm" }}
     {{ end }}
   </div>
