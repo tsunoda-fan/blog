@@ -48,12 +48,12 @@
 
 
     <div class="pickup"> <!--縦にする-->
-      <div class="workanypro"><a href="https://pro-partner.workany.jp/"><img src="/blog/images/logo_workanypro.svg" alt="WorkAnyPROアイコン"></a></div>
+      <div class="workanypro"><a href="https://pro-partner.workany.jp/?utm_source=workanylab&utm_medium=referral"><img src="/blog/images/logo_workanypro.svg" alt="WorkAnyPROアイコン"></a></div>
       <div class="title">オススメ案件</div>
       <div class ="pickup_box">
         {{ range .Site.Params.Pickups }}
         <div class="pickup_chbox">
-          <a href="https://pro-partner.workany.jp/recruit/{{ .id }}/detail">
+          <a href="https://pro-partner.workany.jp/recruit/{{ .id }}/detail/?utm_source=workanylab&utm_medium=referral">
           <div class="box_left">
             <img src="/blog/images/pickup/{{ .id }}.jpg" alt="{{ .title }}のイメージ">
           </div>
@@ -82,7 +82,7 @@
         </div>
         {{ end }}
       </div>
-      <a class="pickup_more" href="https://pro-partner.workany.jp/"><div>他の案件も見る</div></a>
+      <a class="pickup_more" href="https://pro-partner.workany.jp/?utm_source=workanylab&utm_medium=referral"><div>他の案件も見る</div></a>
     </div>
 
     <div class="author">
