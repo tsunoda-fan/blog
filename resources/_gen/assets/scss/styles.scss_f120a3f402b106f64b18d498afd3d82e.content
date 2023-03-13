@@ -758,7 +758,10 @@ section.footer {
     text-align: center;
     padding: 0 .5rem; }
   .share img {
-    height: 16px; }
+    height: 16px;
+    width: 16px; }
+  .share span {
+    margin: 0 0.5rem; }
 
 .share_title {
   font-size: 12px;
